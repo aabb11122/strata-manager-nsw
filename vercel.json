@@ -1,10 +1,19 @@
 {
   "version": 2,
-  "regions": ["syd1"],
   "builds": [
-    { "src": "next.config.ts", "use": "@vercel/next" }
+    { "src": "next.config.js", "use": "@vercel/next" }
   ],
   "routes": [
-    { "src": "/api/hello", "dest": "/api/hello.ts" }
+    { "src": "/api/hello", "dest": "/api/hello.js" }
+  ],
+  "env": {
+    "API_KEY": "@api_key"
+  },
+  "regions": ["syd1"],
+  "crons": [
+    {
+      "path": "/api/cron-task",
+      "schedule": "0 9 * * *"
+    }
   ]
 }
